@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Controls="clr-namespace:Kayar19"
+             xmlns:PickerControl="clr-namespace:Kayar19.CustomControls"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.AddAssetPage"
+             Title="New Asset"
+             Shell.BackgroundColor="#D7E9FB"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Frame Margin="0,10,0,10" HasShadow="False" CornerRadius="5" BackgroundColor="Transparent">
+
+                    <StackLayout>
+                        <Label Style="{StaticResource LabelStyle}" Text="Name:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="45">
+                            <Controls:CustomEntry Placeholder="Name" Keyboard="Default" Text="{Binding Name}"
+                                              x:Name="txtAssetName" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Description:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="45">
+                            <Controls:CustomEntry Placeholder="Description" Keyboard="Default" Text="{Binding Description}"
+                                              x:Name="txtAssetDesc" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Quantity:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="45">
+                            <Controls:CustomEntry Placeholder="Quantity" Keyboard="Default" Text="{Binding Quantity}"
+                                              x:Name="txtAssetQty" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Location:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="45">
+                            <Controls:CustomEntry Placeholder="Location" Keyboard="Default" Text="{Binding Location}"
+                                              x:Name="txtAssetLoc" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Brought By:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="45">
+                            <Controls:CustomEntry Placeholder="Brought By" Keyboard="Default" Text="{Binding BroughtBy}"
+                                              x:Name="txtAssetBrgtBy" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Received By:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="45">
+                            <Controls:CustomEntry Placeholder="Received By" Keyboard="Default" Text="{Binding ReceivedBy}"
+                                              x:Name="txtAssetRvdBy" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Status:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" HasShadow="True" HeightRequest="45">
+                            <PickerControl:CustomPicker x:Name="PickerStatus" Style="{StaticResource PickerStyle}" Title="--Select Status--"
+                                    ItemsSource="{Binding StatusList}"
+                                    ItemDisplayBinding="{Binding Value}"/>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Category:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" HasShadow="True" WidthRequest="285.53" HeightRequest="45">
+                            <Controls:CustomEntry Placeholder="Category" Keyboard="Default" Text="{Binding category}"
+                                              x:Name="txtAssetCatBy" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Serial Number (seperate with comma):"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="60">
+                            <Controls:BorderlessEditor Placeholder="FN023,SN356P..." Keyboard="Default" Text="{Binding serialNumber}"
+                                             AutoSize="TextChanges" x:Name="txtAssetSerialNo" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                        <Label Style="{StaticResource LabelStyle}" Text="Comment:"></Label>
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="100">
+                            <Controls:BorderlessEditor Placeholder="Add Comment" Keyboard="Default" Text="{Binding comment}"
+                                             AutoSize="TextChanges" x:Name="txtAssetComment" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                        <ActivityIndicator x:Name="actindicator" Grid.RowSpan="2" BackgroundColor="#F0F6FB" 
+                                           VerticalOptions="Center"  IsVisible="False"  HorizontalOptions="Center" />
+
+                        <Button  Margin="60,30,60,30" FontSize="20" Clicked="AddAssetClicked"
+                            BorderRadius="6" WidthRequest="157" HeightRequest="45" TextColor="White" 
+                            BackgroundColor="{StaticResource OriginalColor}" Text="ADD ASSET"/>
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

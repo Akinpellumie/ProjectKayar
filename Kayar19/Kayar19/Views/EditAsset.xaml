@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:Kayar19"
+             x:Class="Kayar19.Views.EditAsset"
+             Title="Edit Asset" Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="True"
+             BackgroundColor="{StaticResource SideDrawer}"
+            NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             Shell.BackgroundColor="#D7E9FB"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#D7E9FB">
+                <Grid BackgroundColor="{StaticResource SideDrawer}"  Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" BackgroundColor="Transparent" ImageSource="back.png" Margin="0,0,0,0" Padding="20,20,0,0" Clicked="BackClicked"></Button>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Column="1" Text="Edit Asset" Margin="0,20,0,0"></Label>
+                    </Grid>
+                </Grid>
+                <StackLayout x:Name="SingleItemDetails">
+
+                    <Frame Style="{StaticResource FrameStyle}" Margin="5,5,5,5" HeightRequest="40">
+                        <Controls:CustomEntry Text="{Binding Item_Name}"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}" ></Controls:CustomEntry>
+                    </Frame>
+                    <Frame  Style="{StaticResource FrameStyle}" Margin="5,5,5,5" HeightRequest="40">
+                        <Controls:CustomEntry Text="{Binding Item_Desc}"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Frame   Style="{StaticResource FrameStyle}" Margin="5,5,5,5" HeightRequest="40">
+                        <Controls:CustomEntry Text="{Binding location}"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Frame Style="{StaticResource FrameStyle}" Margin="5,5,5,5" HeightRequest="40">
+                        <Controls:CustomEntry Text="{Binding Comment}"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+
+                    <Button CornerRadius="5" HeightRequest="40" HorizontalOptions="CenterAndExpand"
+                Text="Update" TextColor="White" BackgroundColor="{StaticResource OriginalColor}"/>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

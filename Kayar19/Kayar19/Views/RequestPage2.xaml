@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Controls="clr-namespace:Kayar19"
+             xmlns:Controls1="clr-namespace:Kayar19.CustomControls.Search"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.RequestPage2"
+             Title="SELECT ASSET"
+             BackgroundColor="{StaticResource SideDrawer}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" Margin="10,10,10,20">
+                        <Frame Style="{StaticResource FrameStyle}" WidthRequest="120">
+                            <Controls1:CustomSearch CancelButtonColor="Tomato" MaxLength="8" 
+                       TextChanged="RequestSearchBar_TextChanged" Grid.Column="1" Style="{StaticResource EntryStyle}"
+                        Placeholder="Search Asset" x:Name="txtAssetSearch"  PlaceholderColor="{StaticResource OriginalColor}" Keyboard="Default"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" BackgroundColor="Transparent" HeightRequest="15">
+                        <ActivityIndicator x:Name="indicator" IsVisible="False" Margin="0,5,0,0"  Grid.RowSpan="2" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="False" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2">
+                        <ListView x:Name="ReqAssetList" IsPullToRefreshEnabled="True"
+                          HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="AddReqItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame IsClippedToBounds="True" Style="{StaticResource FrameCard}" HasShadow="True"
+                    Padding="0" Margin="5,5,5,5" BackgroundColor="White" >
+                                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                <Grid VerticalOptions="CenterAndExpand" Padding="2" 
+                          HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Margin="2,2,2,2" Grid.Column="0" Orientation="Vertical">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="Name:" FontSize="12"/>
+                                                            <Label Text="{Binding item_Name}" FontAttributes="Bold" FontSize="12"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="Description:" FontSize="12"/>
+                                                            <Label Text="{Binding item_Desc}" FontAttributes="Bold" FontSize="12"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="Quantity:" FontSize="12"/>
+                                                            <Label Text="{Binding Quantity}" FontAttributes="Bold" FontSize="12"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" HorizontalOptions="End" BackgroundColor="Transparent">
+                                                        <ImageButton Source="AddAssetPlus.png" Clicked="AddItemToComponent" Margin="5,20,5,5"
+                                                                     CommandParameter="{Binding .}" x:Name="ReqAssetTab"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

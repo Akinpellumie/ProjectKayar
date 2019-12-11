@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:Controls="clr-namespace:Kayar19"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.EditProfile"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Shell.BackgroundColor="#D7E9FB" Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="True"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout HorizontalOptions="CenterAndExpand" Margin="10,10,10,10" BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Margin="0,17,0,20" Grid.Row="0" BackgroundColor="Transparent" HeightRequest="100">
+                        <controls:CircleImage x:Name="userImagePro" Margin="0,0,0,0" Source="{Binding UserImage}"
+                                Aspect="AspectFill"  BorderColor="#1976D2"  HorizontalOptions="Center"
+                                BorderThickness="2" HeightRequest="100" WidthRequest="100">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="UploadImageTapped" NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </controls:CircleImage>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" WidthRequest="150" Margin="5,5,5,5">
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,5">
+                            <Controls:CustomEntry x:Name="UpdateFirstName" Text="{Binding FirstName}" Placeholder="Enter firstname" HeightRequest="45" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}" ></Controls:CustomEntry>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" WidthRequest="150" Margin="5,5,5,5">
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,5">
+                            <Controls:CustomEntry x:Name="UpdateLastName" Text="{Binding LastName}" Placeholder="Enter lastname" HeightRequest="45" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}" ></Controls:CustomEntry>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" WidthRequest="150" Margin="5,5,5,5">
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,5" WidthRequest="285.53">
+                            <Controls:CustomEntry x:Name="UpdateEmail" Text="{Binding Email}" Placeholder="Enter email" HeightRequest="45" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}" ></Controls:CustomEntry>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" WidthRequest="150" Margin="5,5,5,5">
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,5" WidthRequest="285.53">
+                            <Controls:CustomEntry x:Name="UpdatePhone" Text="{Binding PhoneNumber}" HeightRequest="45" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}" Placeholder="Enter phone number" ></Controls:CustomEntry>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            
+                <ActivityIndicator x:Name="actindicator" Grid.RowSpan="2" BackgroundColor="#F0F6FB" 
+                                   VerticalOptions="Center"  IsVisible="False"  HorizontalOptions="Center" />
+
+              <Button Text="SUBMIT" BackgroundColor="{StaticResource OriginalColor}" TextColor="White"
+                    FontSize="20" CornerRadius="6" HorizontalOptions="CenterAndExpand"  
+                      FontFamily="{StaticResource font_medium}" Clicked="UpdateUserClicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

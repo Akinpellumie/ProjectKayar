@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Controls="clr-namespace:Kayar19"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.LoginPage"
+             BackgroundImageSource="background.jpg"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightGreenColor">#D7E9FB</Color>
+            <Color x:Key="BorderColor">#419EFB</Color>
+            <Color x:Key="OriginalColor">#1976D2</Color>
+            <Color x:Key="Primary">#1976D2</Color>
+            <Color x:Key="mainbackground">
+                <x:Arguments>
+                    <x:Double>86</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>2</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>2</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.5</x:Double>
+                    <!-- A: 0.0-1.0 -->
+                </x:Arguments>
+            </Color>
+            <Color x:Key="background">
+                <x:Arguments>
+                    <x:Double>255</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>255</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>255</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.65</x:Double>
+                    <!-- A: 0.0-1.0 -->
+                </x:Arguments>
+            </Color>
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#5F5D5D" />
+                <Setter Property="FontSize" Value="Large" />
+
+            </Style>
+
+            <Style x:Key="header" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="40"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--Common Styles Ends-->
+
+    <StackLayout Margin="10,10,10,10"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+        <StackLayout Margin="0,30,0,60" HeightRequest="40">
+            <Label x:Name="lbl_NoInternet" HorizontalTextAlignment="Center" 
+                   TextColor="White" BackgroundColor="Tomato"/>
+            <Image Margin="0,0,0,0" Source="Icon.jpg" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+            <ActivityIndicator x:Name="indicator" IsVisible="False" Margin="0,5,0,0"  Grid.RowSpan="2" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="False" />
+        </StackLayout>
+        <Frame Margin="0,80,0,5" HasShadow="False" CornerRadius="5" BackgroundColor="Transparent">
+
+            <StackLayout>
+                <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="40">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="account.png" Margin="5,0,0,0"></Image>
+                        <Controls:CustomEntry  x:Name="txtUsername" Grid.Column="1" Placeholder="Username" 
+                                               Text="{Binding username}" Keyboard="Default" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Grid>
+                </Frame>
+
+
+                <Frame Style="{StaticResource FrameStyle}" Margin="0,15,0,10" WidthRequest="285.53" HeightRequest="40">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="lock.png" Margin="5,0,0,0"></Image>
+                        <Controls:CustomEntry x:Name="txtPassword" Grid.Column="1" Margin="0,0,0,0" Placeholder="Password" 
+                                              Text="{Binding password}" IsPassword="True" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Grid>
+                </Frame>
+                <Button  Margin="60,30,60,30" FontSize="20" BorderRadius="6" WidthRequest="157" 
+                         HeightRequest="45" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource OriginalColor}" 
+                         BackgroundColor="White" Text="Login"  ContentLayout="0, right" ImageSource="LoginArrow.png" Clicked="LoginClicked"></Button>
+                <Button Clicked="ForgotPassword" FontSize="Caption" Text="Forgot Password? Click HERE" 
+                        TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                        BackgroundColor="Transparent" x:Name="LostPassword"/>
+            </StackLayout>
+
+        </Frame>
+    </StackLayout>
+    
+</ContentPage>

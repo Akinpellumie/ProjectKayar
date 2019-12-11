@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.SearchCardView">
+
+
+    <Frame IsClippedToBounds="True"
+HasShadow="True"
+Padding="0"
+BackgroundColor="White" >
+        <Frame.Margin>
+            <OnPlatform x:TypeArguments="Thickness" Android="10" iOS="10"/>
+        </Frame.Margin>
+        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+            <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" Style="{StaticResource FrameStyle}" >
+                <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0"  Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Style="{StaticResource LabelStyle}" Text="{Binding FullName}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Style="{StaticResource Line2}" Text="{Binding UserName}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </Frame>
+</ContentView>

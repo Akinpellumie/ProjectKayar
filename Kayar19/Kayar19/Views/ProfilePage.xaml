@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:PickerControl="clr-namespace:Kayar19.CustomControls"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.ProfilePage"
+             Shell.BackgroundColor="#D7E9FB"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB"
+             BackgroundColor="{StaticResource SideDrawer}"
+             NavigationPage.HasBackButton="True"
+             Title="PROFILE">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Margin="5,5,5,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                     <RowDefinition Height="Auto"/>
+                     <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Margin="0,7,4,0">
+                                <StackLayout BackgroundColor="Transparent">
+                                    <controls:CircleImage x:Name="userImagePro" Margin="0,0,0,0"
+                                Aspect="AspectFill"  BorderColor="#1976D2"  HorizontalOptions="Center"
+                                BorderThickness="2" HeightRequest="100" WidthRequest="100">
+                                        <Image.Source>
+                                            <Binding Path="UserImage" >
+                                                <Binding.TargetNullValue>
+                                                    <FileImageSource File="userProfile.png">
+                                                    </FileImageSource>
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="UploadImageTapped" NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </controls:CircleImage>
+                                </StackLayout>
+                            </StackLayout>
+                            <Label Margin="10,10,10,10" Grid.Row="1" x:Name="ProfileName" Text="{Binding capName}" FontSize="15" TextColor="#5F5D5D"
+                       FontAttributes="Bold" FontFamily="{StaticResource font_medium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" WidthRequest="100">
+                        <Button Grid.Row="0" Margin="10,5,10,5" FontSize="15" BorderRadius="6" WidthRequest="100" HeightRequest="35" 
+                     BackgroundColor="{StaticResource OriginalColor}" Text="EDIT PROFILE"  
+                         ContentLayout="0, Right" Clicked="EditProfile_Clicked" TextColor="White" ImageSource="arrow.png"/>
+                </StackLayout>
+
+                    <StackLayout Grid.Row="2" WidthRequest="100">
+                        <Button  Grid.Row="1" Margin="10,5,10,5" FontSize="15" BorderRadius="6" WidthRequest="100" HeightRequest="35" 
+                     BackgroundColor="{StaticResource OriginalColor}" TextColor="White" Text="CHANGE PASSWORD"  
+                         ContentLayout="0, Right" Clicked="ChngPassword_Clicked" ImageSource="arrow.png"/>
+                </StackLayout>
+
+                    <StackLayout Grid.Row="3" WidthRequest="100">
+                        <Button Text="UPDATE PICTURE"  Margin="10,5,10,5" BorderRadius="6" WidthRequest="100" HeightRequest="35" 
+                                Clicked="UpdateImage_Clicked" ImageSource="arrow.png" TextColor="White" ContentLayout="0, Right"                  
+                                BackgroundColor="{StaticResource OriginalColor}" FontFamily="{StaticResource font_book}"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" WidthRequest="100">
+                        <Button  Grid.Row="4" Margin="10,5,10,5" FontSize="15" BorderRadius="6" WidthRequest="100" HeightRequest="35" 
+                     BackgroundColor="{StaticResource OriginalColor}" Clicked="SignOutClicked" TextColor="White" Text="SIGN OUT"  
+                         ContentLayout="0, Right" ImageSource="arrow.png"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="5" WidthRequest="100">
+                        <Frame Style="{StaticResource FrameStyle}" Margin="10,5,10,10" HasShadow="True" HeightRequest="35">
+                            <PickerControl:CustomPicker x:Name="PickerRoles" Style="{StaticResource PickerRoleStyle}" Title="Switch Role"
+                                    ItemsSource="{Binding roles}"
+                                    ItemDisplayBinding="{Binding roles}"/>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

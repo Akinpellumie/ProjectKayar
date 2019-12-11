@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:local="clr-namespace:Kayar19.Views"
+       Title="Kayar"
+       x:Class="Kayar19.AppShell">
+
+    <!-- 
+        Styles and Resources 
+    -->
+    <!--<Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#D7E9FB</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="#D7E9FB" />
+                <Setter Property="Shell.ForegroundColor" Value="#D7E9FB" />
+                <Setter Property="Shell.TitleColor" Value="#1976D2" />
+                <Setter Property="Shell.DisabledColor" Value="{StaticResource TxtColor}" />
+                <Setter Property="Shell.UnselectedColor" Value=" #1976D2" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#66B3FF" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TxtColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource TxtColor}"/>
+            </Style>
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="TabBar" x:Key="TabBarStyle">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#D7E9FB"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="#1976D2"/>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>-->
+
+    <!-- Your Pages -->
+    <TabBar>
+        <Tab Title="Home" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AdminDashboardPage}" />
+        </Tab>
+        <Tab Title="Assets" Icon="Assets.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ViewAssets}" />
+        </Tab>
+        <Tab Title="Users" Icon="viewUsers.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ViewUsersAdmin}" />
+        </Tab>
+        <Tab Title="Profile" Icon="acct.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
+        </Tab>
+    </TabBar>
+</Shell>

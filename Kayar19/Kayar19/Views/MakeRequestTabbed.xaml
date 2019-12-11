@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:Controls="clr-namespace:Kayar19"
+             xmlns:Pages="clr-namespace:Kayar19.Views"
+            xmlns:Controls1="clr-namespace:Kayar19.CustomControls.Search"
+            x:Class="Kayar19.Views.MakeRequestTabbed"
+            BackgroundColor="{StaticResource SideDrawer}" 
+            Shell.BackgroundColor="{StaticResource SideDrawer}"
+            BarBackgroundColor="{StaticResource SideDrawer}" BarTextColor="{StaticResource OriginalColor}" 
+            SelectedTabColor="#1976D2">
+
+    <ContentPage  Title="Make Request">
+        <ScrollView>
+        <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" BackgroundColor="Transparent">
+                        <Label Text="Added Assets" TextColor="{StaticResource TxtColor}" FontSize="15" 
+                               FontAttributes="Bold" FontFamily="{StaticResource font_medium}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Margin="10,0,10,0" HorizontalOptions="CenterAndExpand">
+                        <Frame Style="{StaticResource FrameCard}">
+                            <ListView x:Name="Emplist" HasUnevenRows="True" SeparatorVisibility="Default">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame IsClippedToBounds="True" Style="{StaticResource FrameCard}" HasShadow="True"
+                    Padding="0" Margin="5,5,5,5" BackgroundColor="White" >
+                                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                    <Grid VerticalOptions="CenterAndExpand" Padding="2" 
+                          HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Row="0" Margin="2,2,2,2" Grid.Column="0" Orientation="Vertical">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Name:" FontSize="12"/>
+                                                                <Label Text="{Binding item_Name}" FontAttributes="Bold" FontSize="12"/>
+                                                            </StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Description:" FontSize="12"/>
+                                                                <Label Text="{Binding item_Desc}" FontAttributes="Bold" FontSize="12"/>
+                                                            </StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Quantity:" FontSize="12"/>
+                                                                <Label Text="{Binding Quantity}" x:Name="ReqQty" FontAttributes="Bold" FontSize="12"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" HorizontalOptions="End" BackgroundColor="Transparent">
+                                                            <ImageButton Source="close.png" Clicked="RemoveItem" Margin="5,20,5,5"
+                                                                     CommandParameter="{Binding .}" x:Name="ReqAssetTab"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Frame>
+                    </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Label Style="{StaticResource LabelStyle}" Text="Add Comment:"></Label>
+                    <Frame Style="{StaticResource FrameStyle}" BorderColor="{StaticResource BorderColor}" Margin="0,0,0,10" WidthRequest="285.53" HeightRequest="100">
+                        <Controls:CustomEntry Placeholder="Add Comment" Keyboard="Default" Text="{Binding comment}"
+                                         FontFamily="{StaticResource font_book}" IsTextPredictionEnabled="True" x:Name="txtAssetComment" Style="{StaticResource EntryStyle}"/>
+                    </Frame>
+                </StackLayout>
+            
+                <ActivityIndicator x:Name="indicator" Grid.RowSpan="2" BackgroundColor="#F0F6FB" 
+                                           VerticalOptions="Center"  IsVisible="False"  HorizontalOptions="Center" />
+
+                <StackLayout Grid.Row="3">
+            <Button Text="SUBMIT" CornerRadius="5" Clicked="RequestAssetClicked" 
+                   TextColor="White" FontSize="15" HorizontalOptions="CenterAndExpand" 
+                    BackgroundColor="{StaticResource OriginalColor}" FontFamily="{StaticResource font_bold}"/>
+                </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+
+    <Pages:RequestPage2/>
+</TabbedPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.ViewMessagesPage"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Title="Notification"
+             Shell.BackgroundColor="#D7E9FB"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+    <ContentPage.Content>
+        <StackLayout x:Name="SingleMsgDetails">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" BackgroundColor="Transparent">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                        <Label Text="{Binding recipient}" TextColor="#0DC55C"
+                           Grid.Column="0" Margin="10,5,5,5" FontSize="10" HorizontalOptions="StartAndExpand"/>
+                    <Label Text="{Binding subject}" TextColor="#0DC55C"
+                           Grid.Column="1" Margin="10,5,5,10" FontSize="12" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="{Binding date_sent}" TextColor="#0DC55C"
+                           Grid.Column="2" Margin="10,5,5,15" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Label Text="{Binding body}" TextColor="{StaticResource TxtColor}" HorizontalOptions="FillAndExpand"
+                           Grid.Column="0" Margin="10,5,5,15" FontSize="12"/>
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Label Text="{Binding link_type_id}" TextColor="OrangeRed" HorizontalOptions="FillAndExpand"
+                           Grid.Column="0" Margin="10,5,5,15" FontSize="12"/>
+                </StackLayout>
+                <StackLayout Grid.Row="3">
+                    <Label Style="{StaticResource LabelStyle}" FontSize="12" Margin="5,5,5,0" 
+                           Text="Request By:" Grid.Column="0" HorizontalOptions="Start"/>
+                    <Label Grid.Column="1" Text="{Binding sender}" TextColor="LimeGreen" 
+                           HorizontalOptions="StartAndExpand"  Margin="5,5,5,10" FontSize="12"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

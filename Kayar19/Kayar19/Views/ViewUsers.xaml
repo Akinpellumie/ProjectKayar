@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Controls="clr-namespace:Kayar19"
+             xmlns:local12="clr-namespace:Kayar19.Views"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.ViewUsers"
+             NavigationPage.HasNavigationBar="false"
+             Title="Users"
+             Shell.BackgroundColor="#D7E9FB"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame HasShadow="False" BackgroundColor="Transparent">
+                <Grid Grid.Row="0">
+                    <Label Text="Users" FontSize="20" FontAttributes="Bold"/>
+                </Grid>
+            </Frame>
+
+            <StackLayout Grid.Row="1">
+                <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,20" 
+                   WidthRequest="285.53" CornerRadius="10" HeightRequest="52">
+                    <Grid VerticalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="magnify.png" Margin="10,0,0,0"></Image>
+                        <Controls:CustomEntry Grid.Column="1" Style="{StaticResource EntryStyle}" 
+                                          Placeholder="Search User" x:Name="txtUserSearch" Keyboard="Default"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout Grid.Row="2">
+                <ListView x:Name="Emplist" ItemsSource="{Binding Users}"
+                          HasUnevenRows="True" SeparatorVisibility="None" 
+                          >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <local12:CardListView/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

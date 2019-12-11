@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local12="clr-namespace:Kayar19.Views"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.UserDashboard"
+             Title="KAYAR"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB"
+             Shell.BackgroundColor="{StaticResource SideDrawer}"
+             BackgroundColor="{StaticResource SideDrawer}">
+ 
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0"
+                     IconImageSource="bell.png"
+                     Clicked="MsgClicked"/>
+        --><!--<ToolbarItem Order="Primary"
+                     Text="{Binding  NumberOfNotifications}"
+                     x:Name="UnreadMsg"/>--><!--
+    </ContentPage.ToolbarItems>-->
+
+    <ContentPage.Content>
+
+        <StackLayout Margin="5,5,5,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="End" Margin="0,0,10,0">
+                    <ImageButton Clicked="MsgClicked" BackgroundColor="Transparent" HorizontalOptions="End"
+                                 Source="bell.png"/>
+                    <Label x:Name="UnreadMsg" Text="{Binding  NumberOfNotifications}" TextColor="White" FontSize="25"
+                                       FontAttributes="Bold" HorizontalOptions="End" Margin="-35,0,5,0" FontFamily="{StaticResource font_medium}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="AssetsUser" Text="{Binding  NumberOfStaffAsset }" Grid.Row="0" TextColor="#FF0000" FontSize="25" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource font_medium}"/>
+                                <Label Text="Assigned Assets" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Column="1" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="ReqAssetCnt" Text="{Binding NumberOfRequest}" Grid.Row="0" TextColor="#0DC55C" FontSize="25" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource font_medium}"/>
+                                <Label Text="Total Request" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Label Text="Recently Assigned Assets" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TxtColor}" 
+                           FontSize="18"/>
+                </StackLayout>
+                
+                <ActivityIndicator x:Name="indicator" IsVisible="False" Margin="0,5,0,0"  Grid.RowSpan="2" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="False" />
+                
+                <StackLayout Grid.Row="3" Margin="5,5,5,5" BackgroundColor="Transparent">
+                    <ListView IsPullToRefreshEnabled="True" x:Name="RecentAssigned"
+                          HasUnevenRows="True"  ItemTapped="RecentAssignedTapped" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame IsClippedToBounds="True" Style="{StaticResource FrameCard}" HasShadow="True"
+                    Padding="0" Margin="5,5,5,5" BackgroundColor="White" >
+                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                            <Grid VerticalOptions="CenterAndExpand" Padding="2" 
+                          HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Margin="2,2,2,2" Grid.Column="0" Orientation="Vertical">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="Name:" FontSize="12"/>
+                                                        <Label Text="{Binding item_Name}" FontAttributes="Bold" FontSize="12"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="Description:" FontSize="12"/>
+                                                        <Label Text="{Binding item_Desc}" FontAttributes="Bold" FontSize="12"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="Quantity:" FontSize="12"/>
+                                                        <Label Text="{Binding quantity}" FontAttributes="Bold" FontSize="12"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center" Margin="5,5,5,5" Grid.Column="1" Orientation="Horizontal">
+                                                    <!--<Label Text="Status:" FontSize="12"/>-->
+                                                    <Label Text="{Binding Status}" FontAttributes="Bold" TextColor="Green" FontSize="10"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

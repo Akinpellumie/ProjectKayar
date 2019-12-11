@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:Kayar19"
+             x:Class="Kayar19.Views.EditUserPage"
+             Title="Edit User"
+             Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="True"
+             Shell.BackgroundColor="#D7E9FB"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#D7E9FB">
+                <Grid BackgroundColor="#419EFB"  Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" BackgroundColor="Transparent" ImageSource="back.png" Margin="0,0,0,0" Padding="20,20,0,0" Clicked="backClicked"></Button>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Column="1" Text="Edit User" Margin="0,20,0,0"></Label>
+                    </Grid>
+                </Grid>
+                <StackLayout x:Name="SingleUserDetails">
+
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10">
+                        <Controls:CustomEntry x:Name="UpdateFirstName" Text="{Binding FirstName}" HeightRequest="35" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}" ></Controls:CustomEntry>
+                    </Frame>
+                    <Frame  Style="{StaticResource FrameStyle}" Margin="0,0,0,10">
+                        <Controls:CustomEntry x:Name="UpdateLastName" Text="{Binding LastName}" HeightRequest="35" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Frame   Style="{StaticResource FrameStyle}" Margin="0,0,0,10">
+                        <Controls:CustomEntry x:Name="UpdateEmail" Text="{Binding Email}" HeightRequest="35" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10">
+                        <Controls:CustomEntry x:Name="UpdatePhone" Text="{Binding PhoneNumber}" HeightRequest="35" Margin="5,5,5,5"
+                               Keyboard="Default" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+
+                    <ActivityIndicator x:Name="indicator" Grid.RowSpan="2" VerticalOptions="Center"  IsVisible="False"  HorizontalOptions="Center" />
+
+                    <Button CornerRadius="6" HeightRequest="40" HorizontalOptions="CenterAndExpand"
+                Text="Update" Clicked="UpdateUserClicked" TextColor="White" BackgroundColor="{StaticResource OriginalColor}"/>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

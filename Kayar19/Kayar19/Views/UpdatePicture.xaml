@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.UpdatePicture"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Shell.BackgroundColor="#D7E9FB" Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="True"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+    <ContentPage.Content>
+        <StackLayout Margin="15,15,15,15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Margin="10,20,10,10" BackgroundColor="Transparent">
+                    <controls:CircleImage x:Name="userImage" Margin="0,0,0,30"
+                                Aspect="AspectFill"  BorderColor="#1976D2"  HorizontalOptions="Center"
+                                BorderThickness="2" HeightRequest="100" WidthRequest="100" Source="{Binding UserImage}">
+                        <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="UploadImageTapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </controls:CircleImage>
+            </StackLayout>
+
+                <ActivityIndicator x:Name="indicator" BackgroundColor="#F0F6FB" IsVisible="False" Margin="0,5,0,0"  Grid.RowSpan="2" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="False" />
+                
+                
+                <StackLayout Grid.Row="1" Margin="10,20,10,15">
+                <Button Text="Change Picture" Clicked="UpD8Image_Clicked"
+                      TextColor="White" BackgroundColor="{StaticResource OriginalColor}" FontFamily="10" HorizontalOptions="Center"/>
+            </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

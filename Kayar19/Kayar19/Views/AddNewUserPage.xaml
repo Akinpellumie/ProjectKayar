@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:xaml="http://xamarin.com/schemas/2014/forms/design"
+                  xmlns:Controls="clr-namespace:Kayar19"
+                  x:Class="Kayar19.Views.AddNewUserPage"
+             Title="New User"
+             BackgroundColor="#D7E9FB"
+             NavigationPage.HasNavigationBar="True"
+             Shell.BackgroundColor="#D7E9FB"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+
+    <!--<ContentPage.BindingContext>
+        <viewModels:AddUserViewModel />
+    </ContentPage.BindingContext>-->
+    
+    <ScrollView>
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Frame Margin="0,10,0,10" HasShadow="False" CornerRadius="5" BackgroundColor="Transparent">
+
+                <StackLayout>
+                    <Label Style="{StaticResource LabelStyle}" Text="Firstname:"></Label>
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HeightRequest="40">
+                        <Controls:CustomEntry Placeholder="Firstname" Keyboard="Default" Text="{Binding firstname}"
+                                              x:Name="txtFirstname" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Label Style="{StaticResource LabelStyle}" Text="Lastname:"></Label>
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HeightRequest="40">
+                        <Controls:CustomEntry Placeholder="Lastname" Keyboard="Default" Text="{Binding lastname}"
+                                              x:Name="txtLastname" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Label Style="{StaticResource LabelStyle}" Text="Email:"></Label>
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HeightRequest="40">
+                        <Controls:CustomEntry Placeholder="example@pro.com" Keyboard="Email" Text="{Binding email}"
+                                              x:Name="txtEmail" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Label Style="{StaticResource LabelStyle}" Text="Username:"></Label>
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HeightRequest="40">
+                        <Controls:CustomEntry Placeholder="Username" Keyboard="Default" Text="{Binding username}"
+                                              x:Name="txtUserNa" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Label Style="{StaticResource LabelStyle}" Text="Phone Number:"></Label>
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HeightRequest="40">
+                        <Controls:CustomEntry Placeholder="Phone Number" Keyboard="Telephone" Text="{Binding phonenumber}"
+                                              x:Name="txtPhone" Style="{StaticResource EntryStyle}"></Controls:CustomEntry>
+                    </Frame>
+                    <Label Style="{StaticResource LabelStyle}" Text="Select Role(s):"></Label>
+                    <Frame HasShadow="False" HeightRequest="18" BackgroundColor="Transparent" Margin="0,0,0,0">
+                        <Grid>
+                            <CheckBox Color="#1976D2" BindingContext="{Binding roleId, Mode=TwoWay}" 
+                                      IsChecked="False" IsEnabled="True" x:Name="Admin"/>
+                            <Label Text="Admin" Margin="40,0,0,0"/>
+                        </Grid>
+                    </Frame>
+                    <Frame  HasShadow="False" HeightRequest="18" BackgroundColor="Transparent" Margin="0,0,0,0">
+                        <Grid>
+                            <CheckBox Color="#1976D2" BindingContext="{Binding roleId, Mode=TwoWay}" 
+                                       IsChecked="False" IsEnabled="True" x:Name="StoreKeeper"/>
+                            <Label Text="Storekeeper" Margin="40,0,0,0"/>
+                        </Grid>
+                    </Frame>
+                    <Frame  HasShadow="False" BindingContext="{Binding roleId, Mode=TwoWay}" HeightRequest="18" BackgroundColor="Transparent" Margin="0,0,0,0">
+                        <Grid>
+                            <CheckBox Color="#1976D2" BindingContext="{Binding roleId, Mode=TwoWay}" 
+                                      IsChecked="False" IsEnabled="True" x:Name="EndUser"/>
+                            <Label Text="User" Margin="40,0,0,0"/>
+                        </Grid>
+                    </Frame>
+                    <ActivityIndicator x:Name="actindicator" Grid.RowSpan="2" VerticalOptions="Center"  IsVisible="False"  HorizontalOptions="Center" />
+                    
+                    <Button  Margin="60,30,60,30" FontSize="18" HeightRequest="50" TextColor="White" 
+                            BackgroundColor="{StaticResource OriginalColor}" Clicked="CreateUserBtn_Clicked" Text="CREATE USER"/>
+                    
+                   
+
+                 </StackLayout>
+        </Frame>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

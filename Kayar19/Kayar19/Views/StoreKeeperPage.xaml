@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local12="clr-namespace:Kayar19.Views"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.StoreKeeperPage"
+            Shell.BackgroundColor="#D7E9FB"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Title="KAYAR"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0"
+                     IconImageSource="bell2.png"/>
+        <ToolbarItem Order="Secondary"
+                     Text="SIGN OUT"
+                      IconImageSource="outSign.png"
+                     Priority="1"/>
+    </ContentPage.ToolbarItems>-->
+
+    <ContentPage.Content>
+
+        <ScrollView>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="STKTotalAssets" Text="{Binding NumberOfAssets}" Grid.Row="0" TextColor="#FF0000" FontSize="30" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="Total Assets" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+                            <Frame Grid.Column="1" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="requestCount" Text="{Binding NumberOfRequest}" Grid.Row="0" TextColor="#0DC55C" FontSize="30" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="Total Request" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="STKAssignedAsset" Text="{Binding NumberOfAssignedAssets}" Grid.Row="0" TextColor="#3526FE" FontSize="30" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="Assigned Asset" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+                            <Frame Grid.Column="1" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label Text="8" Grid.Row="0" TextColor="#F4BB2D" FontSize="30" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="Total Invoices" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                        <Label Text="Recently Added Assets" Margin="5,5,5,5" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TxtColor}" 
+                           FontSize="18"/>
+                    
+                    <ActivityIndicator x:Name="indicator" IsVisible="False" Margin="0,5,0,0"  Grid.RowSpan="2" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="False" />
+                    
+                </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <ListView IsPullToRefreshEnabled="True" x:Name="NewAssetList"
+                          HasUnevenRows="True" SeparatorVisibility="None" 
+                          ItemTapped="RecentAssetTapped" RefreshControlColor="{StaticResource OriginalColor}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <local12:AssetCardView/>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+            </Grid>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

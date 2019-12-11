@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local12="clr-namespace:Kayar19.Views"
+             mc:Ignorable="d"
+             x:Class="Kayar19.Views.AdminDashboardPage"
+             Shell.BackgroundColor="#D7E9FB"
+             BackgroundColor="{StaticResource SideDrawer}"
+             Title="KAYAR"
+             Shell.TitleColor="{StaticResource OriginalColor}"
+             Shell.TabBarBackgroundColor="#D7E9FB">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Icon Item"
+                     Priority="0"
+                     IconImageSource="bell.png"/>
+        <ToolbarItem Order="Secondary"
+                     Text="SIGN OUT"
+                      IconImageSource="outSign.png"
+                     Priority="1" Clicked="SignOutClicked"/>
+    </ContentPage.ToolbarItems>-->
+    
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Margin="5,5,5,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="totalUsersCount" Text="{Binding NumberOfUsers}" Grid.Row="0" TextColor="#FF0000" FontSize="30" 
+                                       FontAttributes="Bold" Margin="0,0,0,10" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource font_medium}"/>
+                                <Label Text="Registered Users" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Column="1" Margin="5,5,5,5" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="TotalAssets" Text="{Binding NumberOfAssets}" Grid.Row="0" TextColor="#0DC55C" FontSize="30" 
+                                       FontAttributes="Bold" Margin="0,0,0,10" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource font_medium}"/>
+                                <Label Text="Total Assets" Grid.Row="1" 
+                                       TextColor="{StaticResource TxtColor}" FontSize="12" 
+                                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+                            </Grid>
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Label Text="Recently Added Users" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource TxtColor}" 
+                           FontSize="18"/>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Margin="5,5,5,5" BackgroundColor="Transparent">
+                    <ListView IsPullToRefreshEnabled="True" x:Name="UseList"
+                          HasUnevenRows="True" SeparatorVisibility="None" 
+                          ItemTapped="RecentUserTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <local12:CardListView/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>  
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
